@@ -1,0 +1,28 @@
+{
+    "name": "genkovich/dialog-flow-bot-man-middleware",
+    "description": "Middleware for BotMan (BotMan Studio). Integration with DialogFlow API v2.",
+    "type": "library",
+    "keywords": [
+        "Bot",
+        "BotMan",
+        "DialogFlow"
+    ],
+    "require": {
+        "php": ">=7.0",
+        "botman/botman": "^2.0|^3.0",
+        "google/cloud-dialogflow": "v0.19.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "BotMan\\Middleware\\DialogFlow\\V2\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kirill Sulimovsky",
+            "email": "genkovi4@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
