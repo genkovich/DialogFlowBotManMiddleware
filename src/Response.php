@@ -10,32 +10,32 @@ class Response
     /**
      * @var string
      */
-    private $reply;
+    private $reply = '';
 
     /**
      * @var string
      */
-    private $action;
+    private $action = '';
 
     /**
      * @var bool
      */
-    private $isComplete;
+    private $isComplete = false;
 
     /**
      * @var string
      */
-    private $intent;
+    private $intent = '';
 
     /**
      * @var array
      */
-    private $parameters;
+    private $parameters = [];
 
     /**
      * @var array
      */
-    private $contexts;
+    private $contexts = [];
 
     /**
      * @return string
