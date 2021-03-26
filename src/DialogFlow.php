@@ -98,6 +98,10 @@ class DialogFlow implements MiddlewareInterface
      */
     public function matching(IncomingMessage $message, $pattern, $regexMatched): bool
     {
+        if (empty($message->getExtras()['apiAction'])) {
+            return false;
+        }
+
         if ($this->isIgnoreIntentPattern) {
             return true;
         }
