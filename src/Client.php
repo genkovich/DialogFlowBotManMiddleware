@@ -36,13 +36,16 @@ class Client
     /**
      * @param IncomingMessage $message
      * @return Response
-     * @throws ApiException
      */
     public function getResponse(IncomingMessage $message): Response
     {
         $queryInput = $this->queryInput($message->getText(), $this->languageCode);
-        $intentResponse = $this->getIntentResponse(md5($message->getConversationIdentifier()), $queryInput);
-        $queryResult = $intentResponse->getQueryResult();
+        try {
+            $intentResponse = $this->getIntentResponse(md5($message->getConversationIdentifier()), $queryInput);
+            $queryResult = $intentResponse->getQueryResult();
+        } catch (ApiException $apiException) {
+            $queryResult = null;
+        }
 
         $response = new Response();
         if (null === $queryResult || null === $queryResult->getIntent()) {

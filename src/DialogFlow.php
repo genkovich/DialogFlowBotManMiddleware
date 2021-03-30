@@ -73,7 +73,6 @@ class DialogFlow implements MiddlewareInterface
      * @param $next
      *
      * @return mixed
-     * @throws ApiException
      */
     public function received(IncomingMessage $message, $next, BotMan $bot)
     {
