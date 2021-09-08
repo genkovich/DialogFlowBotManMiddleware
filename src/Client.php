@@ -106,13 +106,29 @@ class Client
         $queryParameters = $queryResult->getParameters();
         if (null !== $queryParameters) {
             foreach ($queryParameters->getFields() as $name => $field) {
-                $parameters[$name] = $field->getStringValue();
+                $parameters[$name] = $this->mapToTypeValue($field);
             }
         }
 
         return $parameters;
     }
 
+    private function mapToTypeValue($field) {
+        if ($field->hasListValue()) {
+            return json_decode($field->serializeToJsonString());
+        }
+
+        if ($field->hasNumberValue()) {
+            return $field->getNumberValue();
+        }
+
+        if ($field->hasBoolValue()) {
+            return $field->getBoolValue();
+        }
+
+        return $field->getStringValue();
+    }
+    
     /**
      * @param QueryResult|null $queryResult
      * @return array
